@@ -5,7 +5,7 @@ import Search from './Search';
 import { useSelector } from 'react-redux';
 
 export default function Products() {
-  const allProducts=useSelector((state)=>state.products);
+  const allProducts=useSelector((state)=>state.products.allProducts);
 
   return (
     <div className="container product-container">

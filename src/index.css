@@ -496,8 +496,8 @@ input,button {
 
 .edit-modal-cross{
   position: absolute;
-  top:10rem;
-  right:25rem;
+  top:1rem;
+  right:1rem;
   cursor: pointer;
 }
 
@@ -513,3 +513,14 @@ label>span{
 }
 
 
+/* add item styling */
+.add-container{
+  position: relative;
+}
+
+.add-item-cross{
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  cursor: pointer;
+}

@@ -4,7 +4,8 @@ import { formatPrice, totalAmount } from '../utils/helper'
 import MissingModal from './MissingModal';
 import EditModal from './EditModal';
 import  Status  from './Status';
-
+import { UseSelector } from 'react-redux';
+import {}
 export default function Item({id,image,name,brand,quantity,price,isApprove,isMissing}) {
 
   const [modal,setModal]=useState(false)
@@ -29,7 +30,7 @@ export default function Item({id,image,name,brand,quantity,price,isApprove,isMis
       {/* price */}
       <p>{formatPrice(price)} /6+1LB</p>
       {/* quantity */}
-      <p><span className="quantity-info">{quantity}</span> x  6 + 1LB</p>
+      <p><span className="quantity-info">{Number(quantity)}</span> x  6 + 1LB</p>
       {/* total */}
       <p>{formatPrice(totalAmount(price,quantity))}</p> 
       <Status 
@@ -48,13 +49,14 @@ export default function Item({id,image,name,brand,quantity,price,isApprove,isMis
       modal={modal} 
       handleModal={handleModal}
     />
-    {/* <EditModal
+    <EditModal
       name={name} 
+      id={id}
       image={image} 
       brand={brand} 
       eModal={eModal} 
       handleModal={handleEModal}
-    /> */}
+    />
     </>
   )
 }

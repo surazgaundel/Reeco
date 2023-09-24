@@ -3,8 +3,8 @@
 import React from "react";
 import {RxCross1} from 'react-icons/rx';
 import {TiTick} from 'react-icons/ti';
-import {useDispatch, useSelector } from 'react-redux';
-import { approveStatus,markMissing} from "../features/update/productSlice";
+import {useDispatch } from 'react-redux';
+import { approveStatus} from "../features/update/productSlice";
 
 export default function Status({handleModal, handleEModal,id,isApprove,isMissing}) {
     const dispatch=useDispatch();
