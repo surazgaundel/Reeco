@@ -15,7 +15,6 @@ export const productSlice=createSlice({
         },
         approveStatus:(state,action)=>{
             const product=state.allProducts.find(p=>p.id===action.payload);
-            console.log(product);
             if(product){
                 product.isMissing.isNormal=false;
                 product.isMissing.isUrgent=false;

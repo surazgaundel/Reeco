@@ -18,6 +18,7 @@ export default function EditModal({name,image,id,eModal,brand,handleModal}) {
     const [tempQuantity,setTempQuantity]=useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
 
+
     const handleEdit=(productId,tempPrice,tempQuantity)=>{
         dispatch(updateChanges({productId,tempPrice,tempQuantity,reason}));
         handleModal();
@@ -25,6 +26,7 @@ export default function EditModal({name,image,id,eModal,brand,handleModal}) {
         setTempPrice(0)
     }
     
+    // update price and quantity with new value
     const handleTempPrice = (e) => {
         const price = parseFloat(e.target.value) || 0;
         if(price>0){
@@ -41,6 +43,7 @@ export default function EditModal({name,image,id,eModal,brand,handleModal}) {
         }
     };
 
+    //handle increment and decrement
     const handleIncrement=(e)=>{
         e.preventDefault();
         setTempQuantity(prev=>prev+1)

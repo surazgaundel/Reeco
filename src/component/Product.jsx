@@ -29,17 +29,17 @@ export default function Item({id,image,name,brand,quantity,price,isApprove,messa
       {/* price */}
       <p>
         {formatPrice(price)} /6+1LB
-        <p className="prev-value">{prevPrice && prevPrice}</p>
+        <span className="prev-value">{prevPrice && prevPrice}</span>
       </p>
       {/* quantity */}
       <p>
         <span className="quantity-info">{Number(quantity)}</span> x  6 + 1LB
-        <p className='prev-value'>{prevQuantity&&prevQuantity}</p>
+        <span className='prev-value'>{prevQuantity&&prevQuantity}</span>
       </p>
       {/* total */}
       <p>
         {formatPrice(totalAmount(price,quantity))}
-        <p className='prev-value'>{prevTotal && prevTotal}</p>
+        <span className='prev-value'>{prevTotal && prevTotal}</span>
       </p> 
       <Status 
       handleModal={handleModal} 
