@@ -12,13 +12,14 @@ import { updateChanges } from '../features/update/productSlice';
 
 export default function EditModal({name,image,id,eModal,brand,handleModal}) {
     const dispatch = useDispatch();
+    const [reason,setReason]=useState('');
 
     const [tempPrice,setTempPrice]=useState(0);
     const [tempQuantity,setTempQuantity]=useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
 
     const handleEdit=(productId,tempPrice,tempQuantity)=>{
-        dispatch(updateChanges({productId,tempPrice,tempQuantity}));
+        dispatch(updateChanges({productId,tempPrice,tempQuantity,reason}));
         handleModal();
         setTempPrice(0)
         setTempPrice(0)
@@ -48,6 +49,12 @@ export default function EditModal({name,image,id,eModal,brand,handleModal}) {
         e.preventDefault();
         setTempQuantity(prev=>prev-1)
     }
+
+    //to get reason value using useRef
+    const handleClickRef = (id) => {
+        const reason=changeReason[id-1];
+        setReason(reason);
+      };
 
     return (
     <div className={`modal-overlay ${eModal && 'show-modal'}`}>
@@ -83,7 +90,7 @@ export default function EditModal({name,image,id,eModal,brand,handleModal}) {
                 {
                     changeReason.map(({id,reason})=>{
                         return(
-                            <p key={id} className='reason-info'>{reason}</p>
+                            <p key={id} className='reason-info' onClick={() =>handleClickRef(id)}>{reason}</p>
                         )
                     })
                 }  
