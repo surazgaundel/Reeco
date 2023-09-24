@@ -1,5 +1,6 @@
 import React from 'react'
 import { orderCategory } from '../utils/data'
+import { getDate } from '../utils/helper';
 
 export default function DeliveryDetails() {
   return (
@@ -12,7 +13,7 @@ export default function DeliveryDetails() {
         <div className='vertical-line'></div>
         <section>
           <p>Shipping Date</p>
-          <h1>Thu, Feb 10</h1>
+          <h1>{getDate()}</h1>
         </section>
         <div className='vertical-line'></div>
         <section>

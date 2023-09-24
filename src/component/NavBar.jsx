@@ -10,8 +10,7 @@ export default function NavBar() {
     const handleOpen=()=>{
         setIsOpen(prev=>!prev);
     }
-    
-    console.log(isOpen);
+
   return (
     <nav className="nav-container">
         <div className="nav-items">

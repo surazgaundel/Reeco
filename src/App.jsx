@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { DeliveryDetails, NavBar, OrderHeader, Products } from './component'
-import Counter from './features/counter/Counter'
+import { useDispatch } from 'react-redux'
+import { loadProducts } from './features/update/productSlice'
+import { productsList } from './utils/data';
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch=useDispatch();
+
+  useEffect(()=>{
+    dispatch(loadProducts(productsList))
+  },[])
 
   return (
     <>
@@ -12,7 +18,6 @@ function App() {
     <OrderHeader/>
     <DeliveryDetails/>
     <Products/>
-    <Counter/>
     </>
   )
 }
