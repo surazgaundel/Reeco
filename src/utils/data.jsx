@@ -86,6 +86,7 @@ export const productsList=[
         brand:'Hormel Black Label',
         quantity:'66',
         price:'66.67',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -99,6 +100,7 @@ export const productsList=[
         brand:'Hormel White Label',
         quantity:'15',
         price:'29.99',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -113,6 +115,7 @@ export const productsList=[
         brand:'Hormel Black Label',
         quantity:'5',
         price:'60.67',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -126,6 +129,7 @@ export const productsList=[
         brand:'Hormel White Label',
         quantity:'6',
         price:'90.57',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -140,6 +144,7 @@ export const productsList=[
         brand:'Hormel Black Label',
         quantity:'16',
         price:'80.67',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -153,6 +158,7 @@ export const productsList=[
         brand:'Hormel White Label',
         quantity:'66',
         price:'50.57',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -167,6 +173,7 @@ export const productsList=[
         brand:'Hormel Black Label',
         quantity:'35',
         price:'10.67',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -180,6 +187,7 @@ export const productsList=[
         brand:'Hormel White Label',
         quantity:'65',
         price:'24.57',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -194,6 +202,7 @@ export const productsList=[
         brand:'Hormel Black Label',
         quantity:'40',
         price:'60.67',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,
@@ -207,6 +216,7 @@ export const productsList=[
         brand:'Hormel White Label',
         quantity:'20',
         price:'50.57',
+        message:'',
         isApprove:false,
         isMissing:{
             isNormal:false,

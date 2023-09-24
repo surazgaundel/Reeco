@@ -4,9 +4,8 @@ import { formatPrice, totalAmount } from '../utils/helper'
 import MissingModal from './MissingModal';
 import EditModal from './EditModal';
 import  Status  from './Status';
-import { UseSelector } from 'react-redux';
-import {}
-export default function Item({id,image,name,brand,quantity,price,isApprove,isMissing}) {
+// import { UseSelector } from 'react-redux';
+export default function Item({id,image,name,brand,quantity,price,isApprove,message,isMissing,prevPrice,prevQuantity,prevTotal}) {
 
   const [modal,setModal]=useState(false)
   const [eModal,setEModal]=useState(false)
@@ -28,15 +27,25 @@ export default function Item({id,image,name,brand,quantity,price,isApprove,isMis
       {/* brand name */}
       <p>{brand}</p>
       {/* price */}
-      <p>{formatPrice(price)} /6+1LB</p>
+      <p>
+        {formatPrice(price)} /6+1LB
+        <p className="prev-value">{prevPrice && prevPrice}</p>
+      </p>
       {/* quantity */}
-      <p><span className="quantity-info">{Number(quantity)}</span> x  6 + 1LB</p>
+      <p>
+        <span className="quantity-info">{Number(quantity)}</span> x  6 + 1LB
+        <p className='prev-value'>{prevQuantity&&prevQuantity}</p>
+      </p>
       {/* total */}
-      <p>{formatPrice(totalAmount(price,quantity))}</p> 
+      <p>
+        {formatPrice(totalAmount(price,quantity))}
+        <p className='prev-value'>{prevTotal && prevTotal}</p>
+      </p> 
       <Status 
       handleModal={handleModal} 
       handleEModal={handleEModal} 
       id={id} 
+      message={message}
       isApprove={isApprove} 
       isMissing={isMissing} />
     </div>

@@ -6,19 +6,18 @@ import {TiTick} from 'react-icons/ti';
 import {useDispatch } from 'react-redux';
 import { approveStatus} from "../features/update/productSlice";
 
-export default function Status({handleModal, handleEModal,id,isApprove,isMissing}) {
+export default function Status({handleModal, handleEModal,id,isApprove,isMissing,message}) {
     const dispatch=useDispatch();
-
     const handleApproveStatus = (productId) => {
         dispatch(approveStatus(productId));
     };
 
     const {isNormal,isUrgent}=isMissing;
-
+    
     return (
     <div className="status-info">
         <span className={`main-status ${isApprove ?`is-approve`:isUrgent?`is-urgent-missing`:isNormal?'is-missing':''}`}>
-            {isApprove?'Approved':isUrgent?'Missing-Urgent':isNormal?'Missing':''}
+            {message && message}
         </span>
         <button 
         style={{color:isApprove ? 'green' :''}}

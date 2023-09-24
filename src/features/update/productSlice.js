@@ -20,6 +20,7 @@ export const productSlice=createSlice({
                 product.isMissing.isNormal=false;
                 product.isMissing.isUrgent=false;
                 product.isApprove=true;
+                product.message='Approved'
             }
         },
         markMissing:(state,action)=>{
@@ -29,30 +30,63 @@ export const productSlice=createSlice({
                     product.isApprove=false;
                     product.isMissing.isNormal=false;
                     product.isMissing.isUrgent=true;
+                    product.message='Missing-Urgent'
                 }
                 if(action.payload.string ==='no'){
                     product.isApprove=false;
                     product.isMissing.isUrgent=false;
                     product.isMissing.isNormal=true;
+                    product.message='Urgent';
                 }
             }
         },
         updateChanges:(state,action)=>{
             const { productId, tempPrice, tempQuantity } = action.payload;
             const productIndex = state.allProducts.findIndex((p) => p.id === productId);
-            console.log(productIndex);
+
             if (productIndex !== -1) {
-            // const previousPrice=state.allProducts[productIndex].price;
-            // const previousQuantity=state.allProducts[productIndex].quantity;
-            state.allProducts[productIndex].price = tempPrice;
-            state.allProducts[productIndex].quantity = tempQuantity;
+                const previousPrice=state.allProducts[productIndex].price;
+                const previousQuantity=state.allProducts[productIndex].quantity;
+                const previousTotal=previousPrice*previousQuantity;
+
+                if(tempPrice===0){
+                    state.allProducts[productIndex].price = previousPrice;
+                }
+                if(tempQuantity===0){
+                    state.allProducts[productIndex].quantity = previousQuantity;
+                }
+                if(tempPrice>0){
+                    state.allProducts[productIndex].price = tempPrice;
+                }
+                if(tempQuantity>0){
+                    state.allProducts[productIndex].quantity = tempQuantity;
+                }
+
+                const newPrice=state.allProducts[productIndex].price;
+                const newQuantity=state.allProducts[productIndex].quantity;
+
+                if(previousPrice!==newPrice && previousQuantity!==newQuantity){
+                    state.allProducts[productIndex].isApprove = true;
+                    state.allProducts[productIndex].message='Price & Quantity updated';
+                    state.allProducts[productIndex].prevPrice=previousPrice;
+                    state.allProducts[productIndex].prevQuantity=previousQuantity;
+                    state.allProducts[productIndex].prevTotal=previousTotal;
+                    
+                }else if(previousPrice !== newPrice){
+                    state.allProducts[productIndex].isApprove = true;
+                    state.allProducts[productIndex].message='Price-updated';
+                    state.allProducts[productIndex].prevPrice=previousPrice;
+                    state.allProducts[productIndex].prevTotal=previousTotal;
+                } else if(previousQuantity !== newQuantity){
+                    state.allProducts[productIndex].isApprove = true;
+                    state.allProducts[productIndex].message='Quantity-updated';
+                    state.allProducts[productIndex].prevQuantity=previousQuantity;
+                    state.allProducts[productIndex].prevTotal=previousTotal;
+                }
             }
         },
-        updatePrice:(state,action)=>{
-            
-        }
     }
 })
 
-export const {loadProducts,approveStatus,markMissing,updateChanges,previousPrice,previousQuantity}=productSlice.actions;
+export const {loadProducts,approveStatus,markMissing,updateChanges,updatePrice}=productSlice.actions;
 export default productSlice.reducer;
